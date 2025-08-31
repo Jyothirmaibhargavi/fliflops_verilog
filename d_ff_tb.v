@@ -1,0 +1,21 @@
+`include "d_ff.v"
+
+module d_ff_tb;
+reg clk,res,d;
+wire q;
+d_ff dut (.clk(clk),.res(res),.d(d),.q(q));
+
+always #5 clk=~clk;
+
+initial begin 
+  clk=0;
+  res=1;
+  #10;
+  res=0;
+  repeat (50)begin 
+   d=$random;
+   #10;
+   end
+   $finish;
+ end
+endmodule
